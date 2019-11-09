@@ -1,0 +1,20 @@
+type: worker
+dependencies:
+  frontend:
+    path: ../frontend
+  users:
+    type: string
+    name: simulated-users
+resources:
+  requests:
+    cpu: 300m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+environment:
+  FRONTEND_ADDR: $(frontend.host)
+  USERS: $(users)
+terminationGracePeriod: 5
+kubernetes:
+  restartPolicy: Always

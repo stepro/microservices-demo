@@ -1,0 +1,5 @@
+- type: string
+  name: docker-network
+  value: microservices-demo
+- github.com/microsoft/como/defaults/docker
+- ./defaults.yaml

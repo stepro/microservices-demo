@@ -1,0 +1,18 @@
+- type: string
+  name: docker-image-repository
+  value: ""
+- dependencies:
+    docker-image-repository:
+      type: string
+      name: docker-image-repository
+  docker:
+    build:
+      repository: $(docker-image-repository)
+      image: $(self.name)
+- environment:
+    PORT: "$(self.port)"
+- type: grpcService
+  health:
+    command: [/bin/grpc_health_probe, -addr=:$(self.port)]
+    delay: 20
+    interval: 15

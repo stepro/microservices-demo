@@ -1,0 +1,8 @@
+- type: string
+  name: azure-resource-group
+  value: microservices-demo
+- type: string
+  name: azure-location
+  value: westus
+- github.com/microsoft/como/defaults/azure-aks
+- ./defaults.yaml

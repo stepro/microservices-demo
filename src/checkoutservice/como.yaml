@@ -1,0 +1,29 @@
+type: grpcService
+dependencies:
+  cart:
+    path: ../cartservice
+  currency:
+    path: ../currencyservice
+  email:
+    path: ../emailservice
+  payment:
+    path: ../paymentservice
+  product-catalog:
+    path: ../productcatalogservice
+  shipping:
+    path: ../shippingservice
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+environment:
+  CART_SERVICE_ADDR: $(cart.host)
+  CURRENCY_SERVICE_ADDR: $(currency.host)
+  EMAIL_SERVICE_ADDR: $(email.host)
+  PAYMENT_SERVICE_ADDR: $(payment.host)
+  PRODUCT_CATALOG_SERVICE_ADDR: $(product-catalog.host)
+  SHIPPING_SERVICE_ADDR: $(shipping.host)
+port: 5050

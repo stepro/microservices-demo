@@ -1,0 +1,5 @@
+- type: string
+  name: kubernetes-namespace
+  value: microservices-demo
+- github.com/microsoft/como/defaults/kubernetes
+- ./defaults.yaml

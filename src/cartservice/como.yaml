@@ -1,0 +1,17 @@
+type: grpcService
+dependencies:
+  redis:
+    type: redis
+resources:
+  requests:
+    cpu: 200m
+    memory: 64Mi
+  limits:
+    cpu: 300m
+    memory: 128Mi
+environment:
+  LISTEN_ADDR: "0.0.0.0"
+  REDIS_ADDR: $(redis.host)
+port: 7070
+health:
+  command: [/bin/grpc_health_probe, -addr=:7070, -rpc-timeout=5s]

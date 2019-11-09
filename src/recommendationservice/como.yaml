@@ -1,0 +1,18 @@
+type: grpcService
+dependencies:
+  product-catalog:
+    path: ../productcatalogservice
+resources:
+  requests:
+    cpu: 100m
+    memory: 220Mi
+  limits:
+    cpu: 200m
+    memory: 450Mi
+environment:
+  PRODUCT_CATALOG_SERVICE_ADDR: $(product-catalog.host)
+  ENABLE_PROFILER: "0"
+port: 8080
+health:
+  interval: 5
+terminationGracePeriod: 5

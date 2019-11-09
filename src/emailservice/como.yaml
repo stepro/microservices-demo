@@ -1,0 +1,14 @@
+type: grpcService
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+environment:
+  ENABLE_PROFILER: "0"
+port: 8080
+terminationGracePeriod: 5
+kubernetes:
+  servicePort: 5000

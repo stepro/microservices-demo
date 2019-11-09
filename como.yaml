@@ -1,0 +1,8 @@
+type: app
+dependencies:
+  frontend:
+    path: src/frontend
+  loadgenerator:
+    path: src/loadgenerator
+exports:
+  endpoint: $(frontend.endpoint)

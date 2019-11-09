@@ -1,0 +1,41 @@
+type: service
+public: true
+dependencies:
+  ad:
+    path: ../adservice
+  cart:
+    path: ../cartservice
+  checkout:
+    path: ../checkoutservice
+  currency:
+    path: ../currencyservice
+  product-catalog:
+    path: ../productcatalogservice
+  recommendation:
+    path: ../recommendation
+  shipping:
+    path: ../shippingservice
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+environment:
+  AD_SERVICE_ADDR: $(ad.host)
+  CART_SERVICE_ADDR: $(cart.host)
+  CHECKOUT_SERVICE_ADDR: $(checkout.host)
+  CURRENCY_SERVICE_ADDR: $(currency.host)
+  PRODUCT_CATALOG_SERVICE_ADDR: $(product-catalog.host)
+  RECOMMENDATION_SERVICE_ADDR: $(recommendation.host)
+  SHIPPING_SERVICE_ADDR: $(shipping.host)
+port: 8080
+health:
+  delay: 10
+  port: 8080
+  path: /_healthz
+  httpHeaders:
+    Cookie: shop_session-id=x-liveness-probe
+kubernetes:
+  servicePort: 80
